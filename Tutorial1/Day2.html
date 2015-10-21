@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Namespace">    
+    <head>
+        <meta charset="utf-8">
+        <title>Hello World</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js">
+        </script>
+        <script>
+            var Namespace = angular.module('Namespace',[]);
+          
+                  Namespace.controller('ControllerName', function()
+                      {
+                          var scope = this;
+                          scope.name = "Aditya S";
+                      });
+                      
+                        Namespace.controller('ControllerName1', function($scope)
+                      {                          
+                          $scope.name = "Aditya";
+                      });
+        </script>
+    </head>
+    
+    <body >
+        <div ng-controller="ControllerName as control">Hello {{control.name}}</div>        
+        
+         <div ng-controller="ControllerName1">Hello {{name}}</div>
+    </body>
+</html>

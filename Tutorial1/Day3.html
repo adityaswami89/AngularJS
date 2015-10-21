@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Namespace">
+    
+    <head>
+        <meta charset="utf-8">
+        <title>Hello World</title>
+        <link rel="stylesheet" type="text/css" href="css/templates.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js">
+</script>
+        <script src="javascript/app.js"></script>
+    </head>
+    
+    <body ng-controller="ControllerName as control">
+        <p>Hello {{name}}</p>
+        <h1>Welcome to my book store</h1>
+        <div ng-repeat="arr in bookarray">
+            <table>
+                <tr>
+                    <td>
+                        <div>
+                            <img ng-src="{{arr.bookImage}}" />
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div>
+                                <b>Book Name :</b>{{arr.bookName}}</div>
+                            <div>
+                                <b>Book Cost :</b>{{arr.bookCost | currency}}</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Namespace">
+
+<head>
+    <meta charset="utf-8">
+    <title>Hello World</title>
+    <link rel="stylesheet" type="text/css" href="css/templates.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js">
+
+    </script>
+    <script src="javascript/app.js"></script>
+</head>
+
+<body ng-controller="ControllerName as control">
+    <p>Hello {{name}}</p>
+    <h1>Welcome to my book store</h1>
+    <div ng-repeat="arr in bookarray">
+        <table>
+            <tr>
+                <td>
+                    <div>
+                        <img ng-src="{{arr.bookImage}}" />
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div>
+                            <b>Book Name :</b>{{arr.bookName}}</div>
+                        <div>
+                            <b>Book Cost :</b>{{arr.bookCost | currency}}</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <section ng-controller="PanelSwitcher as panel">
+            <ul class="book tabs" id="menu">
+                <li ng-class="{ active:panel.isSelected(1) }"> <a href ng-click="panel.selectTab(1)">Description</a> </li>
+                <li ng-class="{ active:panel.isSelected(2) }"> <a href ng-click="panel.selectTab(2)">Reviews</a> </li>
+            </ul>
+
+
+            <div id="panel1" ng-show="panel.isSelected(1)">
+                <p> {{arr.bookDescription}} </p>
+            </div>
+            <div id="panel2" ng-show="panel.isSelected(2)">
+                <form name="reviewForm" ng-controller="ReviewController as reviewCtrl">
+                    <blockquote ng-repeat="review in arr.reviews">
+                        <b>Stars: {{review.stars}}</b> {{review.body}}
+                        <p><cite>by: {{review.author}}</cite></p>
+                    </blockquote>
+
+
+                    <select name="dropdown" ng-model="review.stars">
+                        <option value="1">1 star</option>
+                        <option value="2">2 stars</option>
+                        <option value="2">3 stars</option>
+                        <option value="2">4 stars</option>
+                        <option value="2">5 stars</option>
+
+                    </select>
+                    <textarea placeholder="Comments" ng-model="review.body"></textarea>
+                    <label>by:</label>
+                    <input type="email" placeholder="xyz@abc.com" ng-model="review.author" />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
